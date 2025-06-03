@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Tickets.Api",
+      "type": "shell",
+      "command": "dotnet run --project src/Tickets/TicketFlow.Services.Tickets.Api"
+    },
+    {
+      "label": "Run SLA.Api",
+      "type": "shell",
+      "command": "dotnet run --project src/SLA/TicketFlow.Services.SLA.Api"
+    },
+    {
+      "label": "Run Inquiries.Api",
+      "type": "shell",
+      "command": "dotnet run --project src/Inquiries/TicketFlow.Services.Inquiries.Api"
+    },
+    {
+      "label": "Run Communication.Api",
+      "type": "shell",
+      "command": "dotnet run --project src/Communication/TicketFlow.Services.Communication.Api"
+    },
+    {
+      "label": "Run Alerting",
+      "type": "shell",
+      "command": "dotnet run --project src/Communication/TicketFlow.Services.Communication.Alerting"
+    },
+    {
+      "label": "Run SystemMetrics.Api",
+      "type": "shell",
+      "command": "dotnet run --project src/SystemMetrics/TicketFlow.Services.SystemMetrics.Api"
+    },
+    {
+      "label": "Run Translations.Api",
+      "type": "shell",
+      "command": "dotnet run --project src/Translations/TicketFlow.Services.Translations.Api"
+    },
+    {
+      "label": "Run All Services",
+      "type": "shell",
+      "command": "./run-all.sh",
+      "windows": {
+        "command": "run-all.bat"
+      }
+    }
+  ]
+}
