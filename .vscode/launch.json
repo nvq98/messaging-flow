@@ -8,6 +8,7 @@
       "program": "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Alerting/bin/Debug/net9.0/TicketFlow.Services.Communication.Alerting.dll",
       "cwd": "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Alerting",
       "stopAtEntry": false,
+      "preLaunchTask": "build Alerting",
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -19,6 +20,7 @@
       "program": "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Api/bin/Debug/net9.0/TicketFlow.Services.Communication.Api.dll",
       "cwd": "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Api",
       "stopAtEntry": false,
+      "preLaunchTask": "build Communication.Api",
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -30,6 +32,7 @@
       "program": "${workspaceFolder}/src/Inquiries/TicketFlow.Services.Inquiries.Api/bin/Debug/net9.0/TicketFlow.Services.Inquiries.Api.dll",
       "cwd": "${workspaceFolder}/src/Inquiries/TicketFlow.Services.Inquiries.Api",
       "stopAtEntry": false,
+      "preLaunchTask": "build Inquiries.Api",
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -41,6 +44,7 @@
       "program": "${workspaceFolder}/src/SLA/TicketFlow.Services.SLA.Api/bin/Debug/net9.0/TicketFlow.Services.SLA.Api.dll",
       "cwd": "${workspaceFolder}/src/SLA/TicketFlow.Services.SLA.Api",
       "stopAtEntry": false,
+      "preLaunchTask": "build SLA.Api",
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -52,6 +56,7 @@
       "program": "${workspaceFolder}/src/SystemMetrics/TicketFlow.Services.SystemMetrics.Api/bin/Debug/net9.0/TicketFlow.Services.SystemMetrics.Api.dll",
       "cwd": "${workspaceFolder}/src/SystemMetrics/TicketFlow.Services.SystemMetrics.Api",
       "stopAtEntry": false,
+      "preLaunchTask": "build SystemMetrics.Api",
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -63,6 +68,7 @@
       "program": "${workspaceFolder}/src/Tickets/TicketFlow.Services.Tickets.Api/bin/Debug/net9.0/TicketFlow.Services.Tickets.Api.dll",
       "cwd": "${workspaceFolder}/src/Tickets/TicketFlow.Services.Tickets.Api",
       "stopAtEntry": false,
+      "preLaunchTask": "build Tickets.Api",
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -74,6 +80,7 @@
       "program": "${workspaceFolder}/src/Translations/TicketFlow.Services.Translations.Api/bin/Debug/net9.0/TicketFlow.Services.Translations.Api.dll",
       "cwd": "${workspaceFolder}/src/Translations/TicketFlow.Services.Translations.Api",
       "stopAtEntry": false,
+      "preLaunchTask": "build Translations.Api",
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -99,6 +106,14 @@
     {
       "name": "Only Tickets",
       "configurations": ["Tickets.Api"]
+    },
+    {
+      "name": "Infra + Translation",
+      "configurations": ["SystemMetrics.Api", "Translations.Api"]
+    },
+    {
+      "name": "Communication Group",
+      "configurations": ["Alerting", "Communication.Api"]
     }
   ]
 }
