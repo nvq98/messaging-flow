@@ -1,208 +1,106 @@
 {
   "version": "2.0.0",
   "tasks": [
-    // === BUILD TASKS ===
-    {
-      "label": "build All Services",
-      "dependsOn": [
-        "build Alerting",
-        "build Communication.Api",
-        "build Inquiries.Api",
-        "build SLA.Api",
-        "build SystemMetrics.Api",
-        "build Tickets.Api",
-        "build Translations.Api"
-      ],
-      "dependsOrder": "parallel"
-    },
-    {
-      "label": "build Alerting",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Alerting"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build Communication.Api",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Api"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build Inquiries.Api",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/src/Inquiries/TicketFlow.Services.Inquiries.Api"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build SLA.Api",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/src/SLA/TicketFlow.Services.SLA.Api"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build SystemMetrics.Api",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/src/SystemMetrics/TicketFlow.Services.SystemMetrics.Api"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build Tickets.Api",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/src/Tickets/TicketFlow.Services.Tickets.Api"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-    {
-      "label": "build Translations.Api",
-      "command": "dotnet",
-      "type": "process",
-      "args": [
-        "build",
-        "${workspaceFolder}/src/Translations/TicketFlow.Services.Translations.Api"
-      ],
-      "problemMatcher": "$msCompile"
-    },
-
-    // === RUN TASKS ===
-    {
-      "label": "run Alerting",
-      "type": "process",
-      "command": "dotnet",
-      "args": [
-        "run",
-        "--project",
-        "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Alerting"
-      ],
-      "options": {
-        "cwd": "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Alerting",
-        "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development"
-        }
-      }
-    },
     {
       "label": "run Communication.Api",
-      "type": "process",
-      "command": "dotnet",
+      "type": "shell",
+      "command": "bash",
       "args": [
-        "run",
-        "--project",
-        "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Api"
+        "-c",
+        "pkill -f 'Communication/TicketFlow.Services.Communication.Api/bin/Debug' || true && dotnet run --project ${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Api/TicketFlow.Services.Communication.Api.csproj"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Api",
         "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development"
+          "ASPNETCORE_ENVIRONMENT": "Development",
+          "ASPNETCORE_URLS": "http://localhost:5418"
         }
-      }
+      },
+      "problemMatcher": []
     },
     {
       "label": "run Inquiries.Api",
-      "type": "process",
-      "command": "dotnet",
+      "type": "shell",
+      "command": "bash",
       "args": [
-        "run",
-        "--project",
-        "${workspaceFolder}/src/Inquiries/TicketFlow.Services.Inquiries.Api"
+        "-c",
+        "pkill -f 'Inquiries/TicketFlow.Services.Inquiries.Api/bin/Debug' || true && dotnet run --project ${workspaceFolder}/src/Inquiries/TicketFlow.Services.Inquiries.Api/TicketFlow.Services.Inquiries.Api.csproj"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/src/Inquiries/TicketFlow.Services.Inquiries.Api",
         "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development"
+          "ASPNETCORE_ENVIRONMENT": "Development",
+          "ASPNETCORE_URLS": "http://localhost:5011"
         }
-      }
+      },
+      "problemMatcher": []
     },
     {
       "label": "run SLA.Api",
-      "type": "process",
-      "command": "dotnet",
+      "type": "shell",
+      "command": "bash",
       "args": [
-        "run",
-        "--project",
-        "${workspaceFolder}/src/SLA/TicketFlow.Services.SLA.Api"
+        "-c",
+        "pkill -f 'SLA/TicketFlow.Services.SLA.Api/bin/Debug' || true && dotnet run --project ${workspaceFolder}/src/SLA/TicketFlow.Services.SLA.Api/TicketFlow.Services.SLA.Api.csproj"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/src/SLA/TicketFlow.Services.SLA.Api",
         "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development"
+          "ASPNETCORE_ENVIRONMENT": "Development",
+          "ASPNETCORE_URLS": "http://localhost:5054"
         }
-      }
+      },
+      "problemMatcher": []
     },
     {
       "label": "run SystemMetrics.Api",
-      "type": "process",
-      "command": "dotnet",
+      "type": "shell",
+      "command": "bash",
       "args": [
-        "run",
-        "--project",
-        "${workspaceFolder}/src/SystemMetrics/TicketFlow.Services.SystemMetrics.Api"
+        "-c",
+        "pkill -f 'SystemMetrics/TicketFlow.Services.SystemMetrics.Api/bin/Debug' || true && dotnet run --project ${workspaceFolder}/src/SystemMetrics/TicketFlow.Services.SystemMetrics.Api/TicketFlow.Services.SystemMetrics.Api.csproj"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/src/SystemMetrics/TicketFlow.Services.SystemMetrics.Api",
         "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development"
+          "ASPNETCORE_ENVIRONMENT": "Development",
+          "ASPNETCORE_URLS": "http://localhost:5231"
         }
-      }
+      },
+      "problemMatcher": []
     },
     {
       "label": "run Tickets.Api",
-      "type": "process",
-      "command": "dotnet",
+      "type": "shell",
+      "command": "bash",
       "args": [
-        "run",
-        "--project",
-        "${workspaceFolder}/src/Tickets/TicketFlow.Services.Tickets.Api"
+        "-c",
+        "pkill -f 'Tickets/TicketFlow.Services.Tickets.Api/bin/Debug' || true && dotnet run --project ${workspaceFolder}/src/Tickets/TicketFlow.Services.Tickets.Api/TicketFlow.Services.Tickets.Api.csproj"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/src/Tickets/TicketFlow.Services.Tickets.Api",
         "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development"
+          "ASPNETCORE_ENVIRONMENT": "Development",
+          "ASPNETCORE_URLS": "http://localhost:5112"
         }
-      }
+      },
+      "problemMatcher": []
     },
     {
       "label": "run Translations.Api",
-      "type": "process",
-      "command": "dotnet",
+      "type": "shell",
+      "command": "bash",
       "args": [
-        "run",
-        "--project",
-        "${workspaceFolder}/src/Translations/TicketFlow.Services.Translations.Api"
+        "-c",
+        "pkill -f 'Translations/TicketFlow.Services.Translations.Api/bin/Debug' || true && dotnet run --project ${workspaceFolder}/src/Translations/TicketFlow.Services.Translations.Api/TicketFlow.Services.Translations.Api.csproj"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/src/Translations/TicketFlow.Services.Translations.Api",
         "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development"
+          "ASPNETCORE_ENVIRONMENT": "Development",
+          "ASPNETCORE_URLS": "http://localhost:5274"
         }
-      }
+      },
+      "problemMatcher": []
     },
+
     {
       "label": "run All Services",
       "dependsOn": [
-        "run Alerting",
         "run Communication.Api",
         "run Inquiries.Api",
         "run SLA.Api",
@@ -210,7 +108,34 @@
         "run Tickets.Api",
         "run Translations.Api"
       ],
-      "dependsOrder": "parallel"
+      "dependsOrder": "parallel",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      }
+    },
+    {
+      "label": "run Tickets + SLA",
+      "dependsOn": ["run Tickets.Api", "run SLA.Api"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    },
+    {
+      "label": "run Only Tickets",
+      "dependsOn": ["run Tickets.Api"],
+      "problemMatcher": []
+    },
+    {
+      "label": "run Infra + Translation",
+      "dependsOn": ["run SystemMetrics.Api", "run Translations.Api"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    },
+    {
+      "label": "run Communication Only",
+      "dependsOn": ["run Communication.Api"],
+      "problemMatcher": []
     }
   ]
 }

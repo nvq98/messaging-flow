@@ -2,18 +2,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Alerting",
-      "type": "coreclr",
-      "request": "launch",
-      "program": "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Alerting/bin/Debug/net9.0/TicketFlow.Services.Communication.Alerting.dll",
-      "cwd": "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Alerting",
-      "stopAtEntry": false,
-      "preLaunchTask": "build Alerting",
-      "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    {
       "name": "Communication.Api",
       "type": "coreclr",
       "request": "launch",
@@ -22,7 +10,8 @@
       "stopAtEntry": false,
       "preLaunchTask": "build Communication.Api",
       "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5418"
       }
     },
     {
@@ -34,7 +23,8 @@
       "stopAtEntry": false,
       "preLaunchTask": "build Inquiries.Api",
       "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5011"
       }
     },
     {
@@ -46,7 +36,8 @@
       "stopAtEntry": false,
       "preLaunchTask": "build SLA.Api",
       "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5054"
       }
     },
     {
@@ -58,7 +49,8 @@
       "stopAtEntry": false,
       "preLaunchTask": "build SystemMetrics.Api",
       "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5231"
       }
     },
     {
@@ -70,7 +62,8 @@
       "stopAtEntry": false,
       "preLaunchTask": "build Tickets.Api",
       "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5112"
       }
     },
     {
@@ -82,7 +75,8 @@
       "stopAtEntry": false,
       "preLaunchTask": "build Translations.Api",
       "env": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5274"
       }
     }
   ],
@@ -90,7 +84,6 @@
     {
       "name": "All Services",
       "configurations": [
-        "Alerting",
         "Communication.Api",
         "Inquiries.Api",
         "SLA.Api",
@@ -112,8 +105,8 @@
       "configurations": ["SystemMetrics.Api", "Translations.Api"]
     },
     {
-      "name": "Communication Group",
-      "configurations": ["Alerting", "Communication.Api"]
+      "name": "Communication",
+      "configurations": ["Communication.Api"]
     }
   ]
 }
