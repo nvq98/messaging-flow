@@ -1,141 +1,190 @@
 {
   "version": "2.0.0",
   "tasks": [
+    // Task kill service bằng powershell Core (powershell)
     {
-      "label": "run Communication.Api",
+      "label": "kill Communication.Api",
       "type": "shell",
-      "command": "bash",
+      "command": "powershell",
       "args": [
-        "-c",
-        "pkill -f 'Communication/TicketFlow.Services.Communication.Api/bin/Debug' || true && dotnet run --project ${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Api/TicketFlow.Services.Communication.Api.csproj"
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/.vscode/scripts/KillDotnetService.ps1",
+        "-ServiceName",
+        "Communication.Api"
       ],
-      "options": {
-        "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development",
-          "ASPNETCORE_URLS": "http://localhost:5418"
-        }
-      },
       "problemMatcher": []
     },
     {
-      "label": "run Inquiries.Api",
+      "label": "kill Inquiries.Api",
       "type": "shell",
-      "command": "bash",
+      "command": "powershell",
       "args": [
-        "-c",
-        "pkill -f 'Inquiries/TicketFlow.Services.Inquiries.Api/bin/Debug' || true && dotnet run --project ${workspaceFolder}/src/Inquiries/TicketFlow.Services.Inquiries.Api/TicketFlow.Services.Inquiries.Api.csproj"
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/.vscode/scripts/KillDotnetService.ps1",
+        "-ServiceName",
+        "Inquiries.Api"
       ],
-      "options": {
-        "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development",
-          "ASPNETCORE_URLS": "http://localhost:5011"
-        }
-      },
       "problemMatcher": []
     },
     {
-      "label": "run SLA.Api",
+      "label": "kill SLA.Api",
       "type": "shell",
-      "command": "bash",
+      "command": "powershell",
       "args": [
-        "-c",
-        "pkill -f 'SLA/TicketFlow.Services.SLA.Api/bin/Debug' || true && dotnet run --project ${workspaceFolder}/src/SLA/TicketFlow.Services.SLA.Api/TicketFlow.Services.SLA.Api.csproj"
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/.vscode/scripts/KillDotnetService.ps1",
+        "-ServiceName",
+        "SLA.Api"
       ],
-      "options": {
-        "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development",
-          "ASPNETCORE_URLS": "http://localhost:5054"
-        }
-      },
       "problemMatcher": []
     },
     {
-      "label": "run SystemMetrics.Api",
+      "label": "kill SystemMetrics.Api",
       "type": "shell",
-      "command": "bash",
+      "command": "powershell",
       "args": [
-        "-c",
-        "pkill -f 'SystemMetrics/TicketFlow.Services.SystemMetrics.Api/bin/Debug' || true && dotnet run --project ${workspaceFolder}/src/SystemMetrics/TicketFlow.Services.SystemMetrics.Api/TicketFlow.Services.SystemMetrics.Api.csproj"
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/.vscode/scripts/KillDotnetService.ps1",
+        "-ServiceName",
+        "SystemMetrics.Api"
       ],
-      "options": {
-        "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development",
-          "ASPNETCORE_URLS": "http://localhost:5231"
-        }
-      },
       "problemMatcher": []
     },
     {
-      "label": "run Tickets.Api",
+      "label": "kill Tickets.Api",
       "type": "shell",
-      "command": "bash",
+      "command": "powershell",
       "args": [
-        "-c",
-        "pkill -f 'Tickets/TicketFlow.Services.Tickets.Api/bin/Debug' || true && dotnet run --project ${workspaceFolder}/src/Tickets/TicketFlow.Services.Tickets.Api/TicketFlow.Services.Tickets.Api.csproj"
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/.vscode/scripts/KillDotnetService.ps1",
+        "-ServiceName",
+        "Tickets.Api"
       ],
-      "options": {
-        "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development",
-          "ASPNETCORE_URLS": "http://localhost:5112"
-        }
-      },
       "problemMatcher": []
     },
     {
-      "label": "run Translations.Api",
+      "label": "kill Translations.Api",
       "type": "shell",
-      "command": "bash",
+      "command": "powershell",
       "args": [
-        "-c",
-        "pkill -f 'Translations/TicketFlow.Services.Translations.Api/bin/Debug' || true && dotnet run --project ${workspaceFolder}/src/Translations/TicketFlow.Services.Translations.Api/TicketFlow.Services.Translations.Api.csproj"
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/.vscode/scripts/KillDotnetService.ps1",
+        "-ServiceName",
+        "Translations.Api"
       ],
-      "options": {
-        "env": {
-          "ASPNETCORE_ENVIRONMENT": "Development",
-          "ASPNETCORE_URLS": "http://localhost:5274"
-        }
-      },
       "problemMatcher": []
     },
 
+    // Build tasks
     {
-      "label": "run All Services",
-      "dependsOn": [
-        "run Communication.Api",
-        "run Inquiries.Api",
-        "run SLA.Api",
-        "run SystemMetrics.Api",
-        "run Tickets.Api",
-        "run Translations.Api"
+      "label": "build Communication.Api",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/Communication/TicketFlow.Services.Communication.Api/TicketFlow.Services.Communication.Api.csproj"
       ],
-      "dependsOrder": "parallel",
-      "problemMatcher": [],
-      "group": {
-        "kind": "build",
-        "isDefault": false
-      }
+      "problemMatcher": "$msCompile"
     },
     {
-      "label": "run Tickets + SLA",
-      "dependsOn": ["run Tickets.Api", "run SLA.Api"],
-      "dependsOrder": "parallel",
-      "problemMatcher": []
+      "label": "build Inquiries.Api",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/Inquiries/TicketFlow.Services.Inquiries.Api/TicketFlow.Services.Inquiries.Api.csproj"
+      ],
+      "problemMatcher": "$msCompile"
     },
     {
-      "label": "run Only Tickets",
-      "dependsOn": ["run Tickets.Api"],
-      "problemMatcher": []
+      "label": "build SLA.Api",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/SLA/TicketFlow.Services.SLA.Api/TicketFlow.Services.SLA.Api.csproj"
+      ],
+      "problemMatcher": "$msCompile"
     },
     {
-      "label": "run Infra + Translation",
-      "dependsOn": ["run SystemMetrics.Api", "run Translations.Api"],
-      "dependsOrder": "parallel",
-      "problemMatcher": []
+      "label": "build SystemMetrics.Api",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/SystemMetrics/TicketFlow.Services.SystemMetrics.Api/TicketFlow.Services.SystemMetrics.Api.csproj"
+      ],
+      "problemMatcher": "$msCompile"
     },
     {
-      "label": "run Communication Only",
-      "dependsOn": ["run Communication.Api"],
-      "problemMatcher": []
+      "label": "build Tickets.Api",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/Tickets/TicketFlow.Services.Tickets.Api/TicketFlow.Services.Tickets.Api.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build Translations.Api",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/Translations/TicketFlow.Services.Translations.Api/TicketFlow.Services.Translations.Api.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+
+    // Compound tasks kill + build (sequence)
+    {
+      "label": "kill-build Communication.Api",
+      "dependsOn": ["kill Communication.Api", "build Communication.Api"],
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "kill-build Inquiries.Api",
+      "dependsOn": ["kill Inquiries.Api", "build Inquiries.Api"],
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "kill-build SLA.Api",
+      "dependsOn": ["kill SLA.Api", "build SLA.Api"],
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "kill-build SystemMetrics.Api",
+      "dependsOn": ["kill SystemMetrics.Api", "build SystemMetrics.Api"],
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "kill-build Tickets.Api",
+      "dependsOn": ["kill Tickets.Api", "build Tickets.Api"],
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "kill-build Translations.Api",
+      "dependsOn": ["kill Translations.Api", "build Translations.Api"],
+      "dependsOrder": "sequence"
     }
   ]
 }
